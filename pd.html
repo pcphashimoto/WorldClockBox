@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, user-scalable=no" />
+<title>Drop View</title>
+<script src="tizen-web-ui-fw/latest/js/jquery.js"></script>
+<script>
+	$(function() {
+		var gInfo = getParameters();
+		if (gInfo["pdopen-arrow-xpos"] != null && gInfo["width"] != null) {
+			var val = gInfo["pdopen-arrow-xpos"] * window.innerWidth
+					/ gInfo["width"];
+			$("#pd > .arrow").css("left", val);
+		}
+
+		function setLocale() {
+			$.when(widgetReady()).done(function() {
+				window.appwidget.sendMessageToBox(JSON.stringify({
+					locale : locales[index]
+				}));
+				$(".locale").text(locales[index].name);
+			})
+		}
+		var locales = [ {
+			name : "Tokyo",
+			offset : 9
+		}, {
+			name : "Moscow",
+			offset : 4
+		}, {
+			name : "Paris",
+			offset : 1
+		}, {
+			name : "New York",
+			offset : -5
+		}, {
+			name : "Los Angeles",
+			offset : -8
+		} ];
+		var index = 0;
+		var str = localStorage.getItem("locale"), locale = JSON.parse(str);
+		if (locale) {
+			locales.some(function(ele, i) {
+				if (ele.name == locale.name) {
+					index = i;
+					return true;
+				}
+			})
+		}
+		setLocale();
+
+		$(".left").click(function(e) {
+			if (--index < 0)
+				index = locales.length - 1;
+			setLocale();
+		});
+		$(".right").click(function(e) {
+			if (++index >= locales.length)
+				index = 0;
+			setLocale();
+		});
+
+		function widgetReady() {
+			var d = new $.Deferred();
+			if (typeof window.appwidget != 'undefined') {
+				d.resolve();
+			} else {
+				window.addEventListener("appwidgetready", function() {
+					d.resolve();
+				}, false);
+			}
+			return d.promise();
+		}
+	});
+	function getParameters() {
+		var searchString = window.location.search.substring(1), params = searchString
+				.split("&"), info = {};
+		for ( var i = 0; i < params.length; i++) {
+			var val = params[i].split("=");
+			info[unescape(val[0])] = unescape(val[1]);
+		}
+		return info;
+	}
+</script>
+<link rel="stylesheet" type="text/css" href="./css/pd.css" />
+</head>
+<body>
+	<div id="pd">
+		<div id="control">
+			<button class="left">◀</button>
+			<span class="locale">Tokyo</span>
+			<button class="right">▶</button>
+		</div>
+		<div class="arrow">▲</div>
+	</div>
+</body>
+</html>

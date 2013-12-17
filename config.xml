@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:tizen="http://tizen.org/ns/widgets" id="http://yourdomain/WorldClockBox" version="1.0.0" viewmodes="maximized">
+    <tizen:app-widget id="DcW1rMjjnT.WorldClockBox.default" primary="true" auto-launch="false" update-period="1800.0">
+        <tizen:box-label xml:lang="en-gb">World Clock Box</tizen:box-label>
+        <tizen:box-label xml:lang="ja-jp">世界時計box</tizen:box-label>
+        <tizen:box-icon src="icon.png"/>
+        <tizen:box-content src="box.html" mouse-event="true" touch-effect="true">
+            <tizen:box-size use-decoration="true">1x1</tizen:box-size>
+            <tizen:box-size use-decoration="true">2x2</tizen:box-size>
+            <tizen:pd src="pd.html" width="720" height="300"/>
+        </tizen:box-content>
+    </tizen:app-widget>
+    <tizen:application id="DcW1rMjjnT.WorldClockBox" package="DcW1rMjjnT" required_version="2.2"/>
+    <content src="index.html"/>
+    <feature name="http://tizen.org/feature/screen.size.all"/>
+    <icon src="icon.png"/>
+    <name>WorldClockBox</name>
+    <tizen:setting screen-orientation="portrait" context-menu="enable" background-support="disable" encryption="disable" install-location="auto" hwkey-event="enable"/>
+</widget>

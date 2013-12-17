@@ -1,0 +1,25 @@
+* {
+	-webkit-user-select: none;
+	-user-select: none;
+}
+#pd {
+	position: relative;
+	padding: 5px;
+	border-radius: 6px;
+	box-shadow: 0 10px 6px -6px #777;
+	background-color: black;
+	color: white;
+}
+
+#pd .arrow {
+	color: black;
+	position: absolute;
+	top: -15px;
+	left: 0px;
+	z-index: 100;
+	font-size: 16px;
+}
+
+#control{
+	font-size: xx-large;
+}

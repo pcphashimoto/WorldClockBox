@@ -1,4 +1,4 @@
 WorldClockBox
 =============
 
-Tizen Dynamixbox sample app
+Tizen Dynamicbox sample app
