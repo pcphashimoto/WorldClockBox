@@ -4,13 +4,12 @@
 }
 .clock {
 	position: absolute;
-	top:0;
-	left:0; 
+	top:6px;
+	left:6px; 
 	width : 320px;
 	height: 320px;
 	border: solid 12px black;
 	border-radius: 50%;
-	width: 320px;
 	box-shadow: inset 0px 0px 30px rgba(0,0,0,0.8);
 }
 

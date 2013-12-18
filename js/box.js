@@ -4,6 +4,7 @@ $(function() {
 		console.log("setDate");
 		var d = new Date();
 		if (locale) {
+			console.log(locale.name + ":" + locale.offset);
 			d = new Date(d.getTime() + (d.getTimezoneOffset() * 60 * 1000)
 					+ (locale.offset * 60 * 60 * 1000));
 			$(".locale").text(locale.name);
@@ -39,8 +40,9 @@ $(function() {
 		,locale = JSON.parse(str);
 		if(locale){
 			setDate(locale);
+		}else{
+			setDate();
 		}
-		setDate();
 	}
 	
 	
